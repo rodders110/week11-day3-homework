@@ -17,17 +17,23 @@ Cinema.prototype.filmByTitle = function (title) {
 };
 
 Cinema.prototype.filterByGenre = function(genre){
-  let result = this.films.filter(film => film.genre === genre);
+  let result = this.films.filter(function(film){
+    return film.genre === genre;
+  })
   return result;
 };
 
-Cinema.prototype.filterByYear = function (year) {
-  let result = this.films.some(film => film.year === year);
+Cinema.prototype.filterBy = function (property, value) {
+  let result = this.films.some(function(film){
+    return film[property] === value
+  });
   return result;
 };
 
 Cinema.prototype.hasDuration = function (duration) {
-  let result = this.films.every(film => film.length >= duration);
+  let result = this.films.every(function(film){
+    return film.length >= duration;
+  });
   return result;
 };
 
