@@ -46,10 +46,26 @@ describe('Cinema', function () {
     assert.deepEqual(actual, expected)
   });
 
-  it('should be able to check whether there are some films from a particular year');
-  it('should be able to check whether there are no films from a particular year');
-  it('should be able to check whether all films are over a particular length');
-  it('should be able to calculate total running time of all films');
+  it('should be able to check whether there are some films from a particular year', function(){
+    let expected = true;
+    let actual = cinema.filterByYear(2016);
+    assert.deepStrictEqual(actual, expected);
+  });
+  it('should be able to check whether there are no films from a particular year', function(){
+    let expected = false;
+    let actual = cinema.filterByYear(2004);
+    assert.deepStrictEqual(actual, expected);
+  });
+  it('should be able to check whether all films are over a particular length', function() {
+    let expected = true;
+    let actual = cinema.hasDuration(90);
+    assert.deepStrictEqual(actual, expected);
+  });
+  it('should be able to calculate total running time of all films', function(){
+    let expected = 622;
+    let actual = cinema.totalDuration();
+    assert.deepStrictEqual(actual, expected);
+  });
 
 });
 

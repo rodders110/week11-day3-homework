@@ -21,4 +21,22 @@ Cinema.prototype.filterByGenre = function(genre){
   return result;
 };
 
+Cinema.prototype.filterByYear = function (year) {
+  let result = this.films.some(film => film.year === year);
+  return result;
+};
+
+Cinema.prototype.hasDuration = function (duration) {
+  let result = this.films.every(film => film.length >= duration);
+  return result;
+};
+
+Cinema.prototype.totalDuration = function(){
+let ray = [];
+for(let film of this.films){
+  ray.push(film.length);
+}
+let reducer = (accumulator, currentValue) => accumulator + currentValue;
+return ray.reduce(reducer);
+}
 module.exports = Cinema;
